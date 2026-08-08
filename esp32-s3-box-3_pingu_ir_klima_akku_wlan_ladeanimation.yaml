@@ -504,7 +504,7 @@ script:
           const int panel_right_padding = 8;
           const int panel_top_padding = 4;
 
-          id(s3_box_lcd).filled_rectangle(panel_x, panel_y, panel_w, panel_h, Color::BLUE);
+          id(s3_box_lcd).filled_rectangle(panel_x, panel_y, panel_w, panel_h, Color(30, 144, 255));
           id(s3_box_lcd).rectangle(panel_x, panel_y, panel_w, panel_h, Color::WHITE);
 
           // Wi-Fi strength bars.
@@ -524,9 +524,9 @@ script:
             const int x = wifi_x + i * 6;
             const int y = wifi_bottom - height;
             if (i < bars) {
-              id(s3_box_lcd).filled_rectangle(x, y, 4, height, Color::White);
+              id(s3_box_lcd).filled_rectangle(x, y, 4, height, Color::WHITE);
             } else {
-              id(s3_box_lcd).rectangle(x, y, 4, height, Color::BLACK);
+              id(s3_box_lcd).rectangle(x, y, 4, height, Color::WHITE);
             }
           }
 
