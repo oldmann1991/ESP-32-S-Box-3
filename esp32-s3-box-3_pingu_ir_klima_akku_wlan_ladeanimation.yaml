@@ -552,7 +552,7 @@ script:
           const int battery_y = panel_y + panel_top_padding;
 
           // Percentage text position
-          const int percent_x = battery_x + battery_w - 36;
+          const int percent_x = battery_x + battery_w - 50;
 
           // Battery outline
           id(s3_box_lcd).rectangle(battery_x, battery_y, battery_w, battery_h, Color::WHITE);
@@ -574,9 +574,9 @@ script:
           }
 
           if (battery_valid) {
-            id(s3_box_lcd).printf(percent_x, 2, id(font_status), Color::BLACK, "%d%%", percent);
+            id(s3_box_lcd).printf(percent_x, 2, id(font_status), Color::WHITE, "%d%%", percent);
           } else {
-            id(s3_box_lcd).printf(percent_x, 2, id(font_status), Color::BLACK, "--%%");
+            id(s3_box_lcd).printf(percent_x, 2, id(font_status), Color::WHITE, "--%%");
           }
 
   - id: draw_display
