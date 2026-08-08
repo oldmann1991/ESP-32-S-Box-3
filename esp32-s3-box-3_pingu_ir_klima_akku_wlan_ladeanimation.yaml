@@ -500,6 +500,9 @@ script:
           const int panel_w = 116;
           const int panel_h = 18;
 
+          const int panel_left_padding = 5;
+          const int panel_right_padding = 8;
+
           id(s3_box_lcd).filled_rectangle(panel_x, panel_y, panel_w, panel_h, Color::WHITE);
           id(s3_box_lcd).rectangle(panel_x, panel_y, panel_w, panel_h, Color::BLACK);
 
@@ -513,7 +516,7 @@ script:
             else if (rssi >= -85) bars = 1;
           }
 
-          const int wifi_x = 207;
+          const int wifi_x = panel_x + panel_left_padding;
           const int wifi_bottom = 16;
           for (int i = 0; i < 4; i++) {
             const int height = 3 + i * 2;
@@ -533,11 +536,23 @@ script:
           if (percent < 0) percent = 0;
           if (percent > 100) percent = 100;
 
-          const int battery_x = 236;
-          const int battery_y = 5;
+          // ======================================================================
+          // Battery Layout
+          // ----------------------------------------------------------------------
+          // Die Größe wird bewusst VOR der Position definiert.
+          // Der Grund:
+          // battery_x benötigt battery_w zur Berechnung der rechten Ausrichtung.
+          // ======================================================================
+
           const int battery_w = 24;
           const int battery_h = 9;
+
+          const int battery_x = panel_x + panel_w - battery_w - panel_right_padding;
+          const int battery_y = panel_y + panel_top_padding;
+
+          // Battery outline
           id(s3_box_lcd).rectangle(battery_x, battery_y, battery_w, battery_h, Color::BLACK);
+          // Battery terminal (small positive contact)
           id(s3_box_lcd).filled_rectangle(battery_x + battery_w, battery_y + 3, 2, 3, Color::BLACK);
 
           int displayed_percent = percent;
