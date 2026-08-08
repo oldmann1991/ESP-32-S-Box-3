@@ -504,7 +504,7 @@ script:
           const int panel_right_padding = 8;
           const int panel_top_padding = 4;
 
-          id(s3_box_lcd).filled_rectangle(panel_x, panel_y, panel_w, panel_h, Color(30, 144, 255));
+          id(s3_box_lcd).filled_rectangle(panel_x, panel_y, panel_w, panel_h, Color::BLUE);
           id(s3_box_lcd).rectangle(panel_x, panel_y, panel_w, panel_h, Color::WHITE);
 
           // Wi-Fi strength bars.
@@ -524,7 +524,7 @@ script:
             const int x = wifi_x + i * 6;
             const int y = wifi_bottom - height;
             if (i < bars) {
-              id(s3_box_lcd).filled_rectangle(x, y, 4, height, Color::WHITE);
+              id(s3_box_lcd).filled_rectangle(x, y, 4, height, Color::White);
             } else {
               id(s3_box_lcd).rectangle(x, y, 4, height, Color::BLACK);
             }
@@ -555,7 +555,7 @@ script:
           const int percent_x = battery_x + battery_w + 6;
 
           // Battery outline
-          id(s3_box_lcd).rectangle(battery_x, battery_y, battery_w, battery_h, Color::BLACK);
+          id(s3_box_lcd).rectangle(battery_x, battery_y, battery_w, battery_h, Color::WHITE);
           // Battery terminal (small positive contact)
           id(s3_box_lcd).filled_rectangle(battery_x + battery_w, battery_y + 3, 2, 3, Color::WHITE);
 
