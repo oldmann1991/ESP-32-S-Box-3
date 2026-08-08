@@ -502,6 +502,7 @@ script:
 
           const int panel_left_padding = 5;
           const int panel_right_padding = 8;
+          const int panel_top_padding = 4;
 
           id(s3_box_lcd).filled_rectangle(panel_x, panel_y, panel_w, panel_h, Color::WHITE);
           id(s3_box_lcd).rectangle(panel_x, panel_y, panel_w, panel_h, Color::BLACK);
