@@ -552,7 +552,7 @@ script:
           const int battery_y = panel_y + panel_top_padding;
 
           // Percentage text position
-          const int percent_x = battery_x + battery_w + 6;
+          const int percent_x = battery_x + battery_w - 36;
 
           // Battery outline
           id(s3_box_lcd).rectangle(battery_x, battery_y, battery_w, battery_h, Color::WHITE);
