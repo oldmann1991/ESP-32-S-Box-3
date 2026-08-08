@@ -504,8 +504,8 @@ script:
           const int panel_right_padding = 8;
           const int panel_top_padding = 4;
 
-          id(s3_box_lcd).filled_rectangle(panel_x, panel_y, panel_w, panel_h, Color::WHITE);
-          id(s3_box_lcd).rectangle(panel_x, panel_y, panel_w, panel_h, Color::BLACK);
+          id(s3_box_lcd).filled_rectangle(panel_x, panel_y, panel_w, panel_h, Color(30, 144, 255));
+          id(s3_box_lcd).rectangle(panel_x, panel_y, panel_w, panel_h, Color::WHITE);
 
           // Wi-Fi strength bars.
           float rssi = id(wifi_signal_db).state;
@@ -524,7 +524,7 @@ script:
             const int x = wifi_x + i * 6;
             const int y = wifi_bottom - height;
             if (i < bars) {
-              id(s3_box_lcd).filled_rectangle(x, y, 4, height, Color::BLACK);
+              id(s3_box_lcd).filled_rectangle(x, y, 4, height, Color::WHITE);
             } else {
               id(s3_box_lcd).rectangle(x, y, 4, height, Color::BLACK);
             }
@@ -551,10 +551,13 @@ script:
           const int battery_x = panel_x + panel_w - battery_w - panel_right_padding;
           const int battery_y = panel_y + panel_top_padding;
 
+          // Percentage text position
+          const int percent_x = battery_x + battery_w + 6;
+
           // Battery outline
           id(s3_box_lcd).rectangle(battery_x, battery_y, battery_w, battery_h, Color::BLACK);
           // Battery terminal (small positive contact)
-          id(s3_box_lcd).filled_rectangle(battery_x + battery_w, battery_y + 3, 2, 3, Color::BLACK);
+          id(s3_box_lcd).filled_rectangle(battery_x + battery_w, battery_y + 3, 2, 3, Color::WHITE);
 
           int displayed_percent = percent;
 
@@ -567,13 +570,13 @@ script:
 
           const int fill_w = (battery_w - 4) * displayed_percent / 100;
           if (fill_w > 0) {
-            id(s3_box_lcd).filled_rectangle(battery_x + 2, battery_y + 2, fill_w, battery_h - 4, Color::BLACK);
+            id(s3_box_lcd).filled_rectangle(battery_x + 2, battery_y + 2, fill_w, battery_h - 4, Color::WHITE);
           }
 
           if (battery_valid) {
-            id(s3_box_lcd).printf(267, 2, id(font_status), Color::BLACK, "%d%%", percent);
+            id(s3_box_lcd).printf(percent_x, 2, id(font_status), Color::BLACK, "%d%%", percent);
           } else {
-            id(s3_box_lcd).printf(267, 2, id(font_status), Color::BLACK, "--%%");
+            id(s3_box_lcd).printf(percent_x, 2, id(font_status), Color::BLACK, "--%%");
           }
 
   - id: draw_display
